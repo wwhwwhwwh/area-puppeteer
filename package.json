@@ -1,6 +1,8 @@
 {
-  "name": "@wwh/area-puppeteer",
+  "name": "@yanbo/area-puppeteer",
   "version": "0.0.4",
+  "license": "MIT",
+  "author": "yanbo <819371938@qq.com.com>",
   "dependencies": {
     "async-await-error-handling": "^0.5.2",
     "chai": "^4.1.2",
@@ -12,8 +14,11 @@
   "description": "基于 puppeteer 的中国行政区域抓取爬虫(省市区)",
   "scripts": {
     "start": "node src/index.js",
-    "format": "node src/format.js",
-    "publish": "node -cmd .github/workflows/npm-publish.sh"
+    "format": "node src/format.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwhwwhwwh/area-puppeteer.git"
   },
   "devDependencies": {
     "json-format": "^1.0.1"
