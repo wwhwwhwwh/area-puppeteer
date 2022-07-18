@@ -1,5 +1,5 @@
 {
-  "name": "area-puppeteer",
+  "name": "@wwh/area-puppeteer",
   "version": "0.0.1",
   "dependencies": {
     "async-await-error-handling": "^0.5.2",
@@ -12,7 +12,8 @@
   "description": "基于 puppeteer 的中国行政区域抓取爬虫(省市区)",
   "scripts": {
     "start": "node src/index.js",
-    "format": "node src/format.js"
+    "format": "node src/format.js",
+    "publish": ".github/workflows/npm-publish.sh"
   },
   "devDependencies": {
     "json-format": "^1.0.1"
