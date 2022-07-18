@@ -39,3 +39,6 @@ add text
 .github/workflows/npm-publish.sh
 ```
 
+```
+git push origin [tagname]
+```
