@@ -13,7 +13,7 @@
   "scripts": {
     "start": "node src/index.js",
     "format": "node src/format.js",
-    "publish": ".github/workflows/npm-publish.sh"
+    "publish": "node -cmd .github/workflows/npm-publish.sh"
   },
   "devDependencies": {
     "json-format": "^1.0.1"
