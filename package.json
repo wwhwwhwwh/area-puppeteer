@@ -1,8 +1,8 @@
 {
-  "name": "@yanbo/area-puppeteer",
+  "name": "@wwhwwhwwh/area-puppeteer",
   "version": "0.0.17",
   "license": "MIT",
-  "author": "yanbo <819371938@qq.com.com>",
+  "author": "wwhwwhwwh <819371938@qq.com.com>",
   "dependencies": {
     "async-await-error-handling": "^0.5.2",
     "chai": "^4.1.2",
