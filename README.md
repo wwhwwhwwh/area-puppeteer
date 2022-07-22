@@ -27,18 +27,10 @@ npm run format // 根据市县区数据生成 省市区数据
 
 
 
-## 声明
-
-- 仅用于个人学习使用，不涉及商业目的
-- 请遵守中华人民共和国法律法规，合理合法使用
 
 
-add text
 
-```shell
-.github/workflows/npm-publish.sh
-```
+ 
 
-```
-git push origin [tagname]
-```
+
+ 
