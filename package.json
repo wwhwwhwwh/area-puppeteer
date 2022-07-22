@@ -1,6 +1,6 @@
 {
   "name": "@yanbo/area-puppeteer",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "license": "MIT",
   "author": "yanbo <819371938@qq.com.com>",
   "dependencies": {
