@@ -1,7 +1,7 @@
 {
   "name": "@wwhwwhwwh/area-puppeteer",
   "description": "A flexible, highly available district selector for picking provinces, cities and districts of China.",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": "wwhwwhwwh <819371938@qq.com.com>",
   "license": "MIT",
   "main": "dist/v-distpicker.js",
