@@ -1,36 +1,113 @@
+<p align="center">
+<img src="https://pigjian.com/images/v-distpicker.png" alt="Powered By Jiajian Chan" width="160">
+</p>
+
+<p align="center">A flexible, highly available district selector for picking provinces, cities and districts of China. </p>
+
+# V - Distpicker
+
+Here is [ online documents](https://19hphh.sse.codesandbox.io/)
 
 
-# area-puppeteer
-基于 puppeteer 的中国行政区域抓取爬虫
+Vue 2
 
-根据 [area-puppeteer](https://github.com/dwqs/area-puppeteer) 修改完善
+-  1.x
 
-## 数据来源
-* 国家统计局：[统计用区划代码和城乡划分代码](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2021/index.html)
-* 国家民政部：[中华人民共和国行政区划代码](http://www.mca.gov.cn/article/sj/tjbz/a/)
+Vue 3
 
-## 数据更新
+-  2.x
 
+
+## Installation
+
+```javascript
+npm install v-distpicker --save
 ```
-npm i
-npm start // 生成市县区数据
-npm run format // 根据市县区数据生成 省市区数据
+
+Or
+
+```javascript
+yarn add v-distpicker --save
 ```
 
+## Usage
+
+**Register component**
+
+Registe global component:
+
+```javascript
+import VDistpicker from 'v-distpicker'
+const app = createApp(App)
+
+app.component('v-distpicker', VDistpicker)
+```
+
+Use  setup-api:
+
+```javascript
+<script setuo>
+import VDistpicker from 'v-distpicker'
+</script>
+```
+
+Registe component:
+
+```javascript
+import {defineComponent} from 'vue';
+import VDistpicker from 'v-distpicker'
+
+export default defineComponent({
+  components: { VDistpicker }
+})
+```
+
+**How to use**
+
+Basic:
+
+```javascript
+<v-distpicker></v-distpicker>
+```
+
+Default Value:
+
+```javascript
+<v-distpicker province="广东省" city="广州市" area="海珠区"></v-distpicker>
+```
+
+Mobile:
+
+```javascript
+<v-distpicker type="mobile"></v-distpicker>
+```
+
+## Contributors
 
 
-## 参考
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/jcc"><img src="https://avatars.githubusercontent.com/u//12684082?v=4?s=100" width="100px;" alt=""/><br /><sub><b>jcc</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/lyh2668"><img src="https://avatars.githubusercontent.com/u/8433634?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lyh2668</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/wwhwwhwwh"><img src="https://avatars.githubusercontent.com/u/17873876?v=4?s=100" width="100px;" alt=""/><br /><sub><b>wwhwwhwwh</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/kent666a"><img src="https://avatars.githubusercontent.com/u/8786136?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kent666a</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Milogenius"><img src="https://avatars.githubusercontent.com/u/28343096?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Milogenius</b></sub></a><br /></td>
+  </tr>
+    <tr>
+    <td align="center"><a href="https://github.com/xu8117"><img src="https://avatars.githubusercontent.com/u//39123862?v=4?s=100" width="100px;" alt=""/><br /><sub><b>xu8117</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/tcsiye"><img src="https://avatars.githubusercontent.com/u/26521834?v=4?s=100" width="100px;" alt=""/><br /><sub><b>tcsiye</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/iyangsheng"><img src="https://avatars.githubusercontent.com/u/39045336?v=4?s=100" width="100px;" alt=""/><br /><sub><b>iyangsheng</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/liushuai05"><img src="https://avatars.githubusercontent.com/u/26994692?v=4?s=100" width="100px;" alt=""/><br /><sub><b>liushuai05</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Aufree"><img src="https://avatars.githubusercontent.com/u/5310542?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aufree</b></sub></a><br /></td>
+  </tr>
+</table>
 
 
 
-[不设区的地级市](https://baike.baidu.com/item/%E4%B8%8D%E8%AE%BE%E5%8C%BA%E7%9A%84%E5%B8%82)
+## Thanks
 
+- [Distpicker](https://github.com/fengyuanchen/distpicker)
 
+## License
 
-
-
-
- 
-
-
- 
+The plugin is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

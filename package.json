@@ -1,26 +1,50 @@
 {
   "name": "@wwhwwhwwh/area-puppeteer",
-  "version": "0.0.20",
-  "license": "MIT",
+  "description": "A flexible, highly available district selector for picking provinces, cities and districts of China.",
+  "version": "2.0.4",
   "author": "wwhwwhwwh <819371938@qq.com.com>",
-  "dependencies": {
-    "async-await-error-handling": "^0.5.2",
-    "chai": "^4.1.2",
-    "chalk": "^2.4.0",
-    "mocha": "^5.1.0",
-    "ora": "^2.0.0",
-    "puppeteer": "^1.3.0"
-  },
-  "description": "基于 puppeteer 的中国行政区域抓取爬虫(省市区)",
+  "license": "MIT",
+  "main": "dist/v-distpicker.js",
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
+  "keywords": [
+    "省份",
+    "城市",
+    "地区",
+    "省市区",
+    "province",
+    "city",
+    "district",
+    "picker",
+    "plugin",
+    "javascript",
+    "development",
+    "vue3",
+    "component"
+  ],
   "scripts": {
-    "start": "node src/index.js",
-    "format": "node src/format.js"
+    "dev": "cd examples && vite",
+    "build": "rollup -c script/rollup.config.js"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wwhwwhwwh/area-puppeteer.git"
   },
   "devDependencies": {
-    "json-format": "^1.0.1"
+    "@vitejs/plugin-vue": "^2.3.0",
+    "eslint": "^8.12.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.49.11",
+    "sass-loader": "^12.6.0",
+    "vite": "^2.9.0"
   }
 }
