@@ -111,3 +111,7 @@ Mobile:
 ## License
 
 The plugin is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+```
+.\.github\workflows\auto-version-publish.sh
+```
