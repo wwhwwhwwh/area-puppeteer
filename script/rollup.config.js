@@ -1,8 +1,9 @@
 import esbuild from 'rollup-plugin-esbuild'
-import vue from 'rollup-plugin-vue'
+// import vuePlugin from 'rollup-plugin-vue'
 import scss from 'rollup-plugin-scss'
 import dartSass from 'sass'
 import { terser } from 'rollup-plugin-terser'
+import vue from '@vitejs/plugin-vue'
 export default {
   input: 'src/index.js',
   output: {
