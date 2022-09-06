@@ -1,35 +1,32 @@
-const path = require("path");
-const fs = require("fs");
-const _config = { type: "space", size: 4 };
+const path = require('path')
+const fs = require('fs')
+const _config = { type: 'space', size: 4 }
 
-const JSONFormatter = require("json-format");
+const JSONFormatter = require('json-format')
 
 function timeout(delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       try {
-        resolve(1);
+        resolve(1)
       } catch (e) {
-        reject(0);
+        reject(0)
       }
-    }, delay);
-  });
+    }, delay)
+  })
 }
 
 function writeFileModuleSync(name, data) {
-  let str = JSONFormatter(data, _config);
-  fs.writeFileSync(
-    path.resolve(__dirname, name),
-    `export default {\n ${str}  \n}`
-  );
+  let str = JSONFormatter(data, _config)
+  fs.writeFileSync(path.resolve(__dirname, name), `export default   ${str}`)
 }
 
 function isEmptyObj(obj) {
-  return Object.keys(obj).length < 1;
+  return Object.keys(obj).length < 1
 }
 
 function mergeObject(obj1, ...param) {
-  return Object.assign(obj1, ...param);
+  return Object.assign(obj1, ...param)
 }
 
 module.exports = {
@@ -37,4 +34,4 @@ module.exports = {
   mergeObject: mergeObject,
   isEmptyObj: isEmptyObj,
   timeout: timeout,
-};
+}
