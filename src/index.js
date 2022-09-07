@@ -33,8 +33,9 @@ const currentYear = new Date().getFullYear() - 1
 const CITY_FILE = 'city.js'
 const ARAE_FILE = 'area.js'
 const directAreaSpecial = ['嘉峪关市']
-const provincesData = require('./provinces.js')
-const provinces = provincesData['100000']
+const provinces = require('./provinces.js')
+const merge_city = require('./merge_city.js')
+const merge_area = require('./merge_area.js')
 const pcodes = []
 const target = `http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/${currentYear}/#{route}.html`
 let cities = {}
@@ -42,7 +43,7 @@ if (fs.existsSync(path.resolve(__dirname, CITY_FILE))) {
   cities = require('./' + CITY_FILE)
 }
 const delay = 1500
-const isGetCity = false
+const isGetCity = true
 const isGetArea = true
 let areas = {}
 let url = ''
@@ -50,7 +51,7 @@ let url = ''
 // 当前正在抓取的目标
 let curCity = ''
 let curPCode = ''
-const unCatchProvice = ['710000', '810000', '820000', '900000', '910000'] //过滤
+const unCatchProvice = ['710000', '810000', '820000', '900000'] //过滤
 Object.keys(provinces).forEach((code) => {
   if (!unCatchProvice.includes(code)) {
     pcodes.push(code.slice(0, 2))
@@ -154,7 +155,7 @@ process.on('unhandledRejection', (err) => {
       }
     }
 
-    writeFileModuleSync(CITY_FILE, cities)
+    writeFileModuleSync(CITY_FILE, Object.assign(cities, merge_city))
     spinner1.succeed(chalk.green('市区数据抓取完毕，开始抓取县区数据....'))
   }
   if (isGetArea) {
@@ -178,7 +179,7 @@ process.on('unhandledRejection', (err) => {
         await getAreasByCCode(page, city)
       }
     }
-    writeFileModuleSync(ARAE_FILE, areas)
+    writeFileModuleSync(ARAE_FILE, Object.assign(areas, merge_area))
     spinner2.succeed(chalk.green('县区数据抓取完毕'))
   }
   await browser.close()
