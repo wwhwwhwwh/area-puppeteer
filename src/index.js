@@ -6,16 +6,12 @@ const path = require('path')
 const fs = require('fs')
 
 /**
+ *
  * 四个直辖市会将「市辖区」作为二级行政区域
  *
- * 河北省/河南省/湖北省/海南省 等省份会将「省直辖县级行政区划」作为第二级行政区域
- * 新疆会将「自治区直辖县级行政区划」作为第二级行政区域
+
  *
- * 出于实用性考虑，省市联动会过滤掉这些，直接用第二级行政区域补充
  *
- * 重庆市 添加 「县」作为二级行政区域
- *
- * 部分在规划中的新区官方并没有收入
  *
  *
  */
@@ -32,16 +28,13 @@ const spinner2 = ora({
 const currentYear = new Date().getFullYear() - 1
 const CITY_FILE = 'city.js'
 const ARAE_FILE = 'area.js'
-const directAreaSpecial = ['嘉峪关市']
+const directAreaSpecial = ['嘉峪关市'] // 甘肃省/嘉峪关市/市辖区
 const provinces = require('./provinces.js')
 const merge_city = require('./merge_city.js')
 const merge_area = require('./merge_area.js')
 const pcodes = []
 const target = `http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/${currentYear}/#{route}.html`
 let cities = {}
-if (fs.existsSync(path.resolve(__dirname, CITY_FILE))) {
-  cities = require('./' + CITY_FILE)
-}
 const delay = 1500
 const isGetCity = true
 const isGetArea = true
@@ -57,6 +50,13 @@ Object.keys(provinces).forEach((code) => {
     pcodes.push(code.slice(0, 2))
   }
 })
+
+function replaceWords(text, keyMap) {
+  let keys = Object.keys(keyMap)
+  if (keys.includes(text)) {
+    return keyMap[text]
+  }
+}
 
 async function getCitiesByPCode(page, pcode) {
   url = target.replace('#{route}', pcode)
@@ -80,11 +80,13 @@ async function getCitiesByPCode(page, pcode) {
         return code.slice(0, index)
       }
       const list = [...document.querySelectorAll('.citytable .citytr')]
-      const city_filter = ['省直辖县级行政区划', '自治区直辖县级行政区划']
+      const city_keyMap = { 省直辖县级行政区划: '省直辖县', 自治区直辖县级行政区划: '自治区直辖县' }
       let city = {}
       list.forEach((el) => {
         const t = el.innerText.split('\t')
-        if (!city_filter.includes(t[1])) {
+        if (Object.keys(city_keyMap).includes(t[1])) {
+          city[formatCode(t[0])] = formatText(city_keyMap[t[1]])
+        } else {
           city[formatCode(t[0])] = formatText(t[1])
         }
       })
@@ -108,10 +110,10 @@ async function getAreasByCCode(page, city) {
     (city, areas) => {
       let list = [...document.querySelectorAll('.countytable .countytr')]
       if (!list.length) {
-        list = [...document.querySelectorAll('.countytable .towntr')] //东莞市/中山市/儋州市
+        list = [...document.querySelectorAll('.countytable .towntr')] // 东莞市/中山市/儋州市
       }
       if (!list.length) {
-        list = [...document.querySelectorAll('.towntable .towntr')] //嘉峪关市
+        list = [...document.querySelectorAll('.towntable .towntr')] // 甘肃省/嘉峪关市
       }
       const formatCode = (code) => {
         let index = /0+$/.exec(code).index
